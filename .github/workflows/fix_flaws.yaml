@@ -2,7 +2,9 @@ name: Run-Fixes
 
 on:
   pull_request:
-    branches: [branch1, branch2]
+    branches: 
+      - main
+      - branch1
   
 
 jobs:
