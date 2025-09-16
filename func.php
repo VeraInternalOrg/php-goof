@@ -10,8 +10,14 @@
 
 	    $id = $_GET['edid'];
 
-	    $query = "SELECT * FROM task where id = $id";
-	    $result = mysqli_query($conn, $query);
+    $stmt = $conn->prepare("SELECT * FROM task where id =?");
+    if ($stmt) {
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    } else {
+        echo "Failed to prepare the statement.";
+    }
 
 	    if(mysqli_num_rows($result) == 1){
 	        $row = mysqli_fetch_array($result);
