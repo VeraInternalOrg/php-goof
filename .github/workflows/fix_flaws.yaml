@@ -58,10 +58,9 @@ jobs:
           vkey: ${{ secrets.VERACODE_API_KEY }}
           inputFile: results.json
           language: php
-          cwe: 89, 80 # SQL Injection and XSS
+          cwe: 89,80 # SQL Injection and XSS
           fixType: 'batch'
-          debug: false
-          prComment: true
+          #prComment: true
           files: 'all'
           codeSuggestion: false
           createPR: true
