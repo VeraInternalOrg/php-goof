@@ -34,9 +34,9 @@
             <div class="card card-body">
                 <form action="tasks.php" method="POST">
                     <div class="form-group">
-                        <input class="form-control" type="stext" name="title" placeholder="Title" required autofocus value="<?php if(isset($title)) echo $title; ?>">
+                        <input class="form-control" type="submit" name="title" placeholder="Title" required autofocus value="<?php if(isset($title)) print htmlentities($title);?>">
                         <?php if(isset($title)){
-                            ?><input type="hidden" name="edid" value="<?php echo $_GET['edid']?>"><?php } ?>
+                           ?><input type="hidden" name="edid" value="<?php echo htmlentities($_GET['edid'])?>"><?php }?>
 
                     </div>
                     <input type="submit" class="btn btn-success mt-3" name="save_task" value="Save todo">
@@ -63,12 +63,12 @@
                     <tr>
                         <td><?php 
                         echo $converter->convertToHtml(urldecode($row['title']));?></td>
-                        <td><?php echo $row['created_at'];?></td>
+                        <td><?php echo htmlentities($row['created_at']);?></td>
                         <td>
-                            <a href="index.php?edid=<?php echo $row['id'];?>"><span class="material-icons">edit</span></a>
-                            <a href="tasks.php?delid=<?php echo $row['id'];?>"><span class="material-icons text-danger">delete_forever</span></a>
+                            <a href="index.php?edid=<?php echo htmlentities($row['id']);?>"><span class="material-icons">edit</span></a>
+                            <a href="tasks.php?delid=<?php echo htmlentities($row['id']);?>"><span class="material-icons text-danger">delete_forever</span></a>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal" title="send email reminder"><span class="material-icons email">email</span></a>
-                             <a href="pdf.php?title=<?php echo $row['title'];?>" target="_blank"><span class="material-icons picture_as_pdf">picture_as_pdf</span></a>
+                             <a href="pdf.php?title=<?php echo htmlentities($row['title']);?>" target="_blank"><span class="material-icons picture_as_pdf">picture_as_pdf</span></a>
 
                             <!-- Modal -->
                             <div class="modal" id="myModal">
